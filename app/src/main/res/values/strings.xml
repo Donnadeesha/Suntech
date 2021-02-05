@@ -10,10 +10,12 @@
     <string name="reg_button">Register Now</string>
     <string name="register_now">Register Now</string>
     <string name="not_registered_yet">Not Registered Yet?</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="register_main">Register</string>
+    <string name="register_admin">Admin</string>
+    <string name="register_laptop">Laptop</string>
+
+
+
 
 
 </resources>
