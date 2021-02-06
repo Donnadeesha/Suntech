@@ -2,7 +2,7 @@
 
 
     <string name="suntech">Suntech Stores</string>
-    <string name="login">Item Login</string>
+    <string name="login">Login</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login_button">Login</string>
@@ -13,9 +13,32 @@
     <string name="register_main">Register</string>
     <string name="register_admin">Admin</string>
     <string name="register_laptop">Laptop</string>
+    <string name="register_adminprofile">Register Admin</string>
+    <string name="staff_ID">Staff ID</string>
+    <string name="admin_name">Name</string>
+    <string name="admin_register">Register Admin</string>
+    <string name="register_laptop_profile">Register New Laptop Version</string>
+    <string name="laptop_id">Laptop ID</string>
+    <string name="lap_Model_name">Laptop Model</string>
+    <string name="laptop_amount">Quantity</string>
+    <string name="welcome_admin">Welcome</string>
+    <string name="view_laptops">VIEW LAPTOPS LIST</string>
+    <string name="view_monitor">VIEW MONITOR LIST</string>
+    <string name="view_admin_profile">VIEW ADMIN PROFILE</string>
+    <string name="register_laptop1">REGISTER LAPTOP</string>
+    <string name="laptop_profile">LAPTOP PROFILE</string>
+    <string name="update_details">UPDATE DETAILS</string>
+    <string name="delete_record">DELETE RECORD</string>
+    <string name="laptop_list">LAPTOP LIST</string>
 
 
 
+    <string-array name="userTypes">
 
+        <item>Select User</item>
+        <item>Admin</item>
+        <item>Laptop</item>
+
+    </string-array>
 
 </resources>

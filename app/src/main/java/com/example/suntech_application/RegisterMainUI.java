@@ -9,6 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.suntech_application.Laptop.Laptop;
+
 public class RegisterMainUI  extends AppCompatActivity {
 
 
@@ -24,11 +26,35 @@ public class RegisterMainUI  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_main_ui);
 
+        Button btnadmin = (Button)findViewById(R.id.btnAdmin);
+        Button btnlaptop = (Button)findViewById(R.id.btnLaptop);
 
+
+        btnadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAdminRegisterUI();
+            }
+        });
+
+        btnlaptop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openLaptopRegisterUI();
+            }
+        });
 
     }
 
+    private void openAdminRegisterUI() {
+        Intent intent = new Intent(RegisterMainUI.this,AdminRegisterUI.class);
+        startActivity(intent);
+    }
 
+    private void openLaptopRegisterUI() {
+        Intent intent = new Intent(RegisterMainUI.this, LaptopRegisterUI.class);
+        startActivity(intent);
+    }
 
 
 }

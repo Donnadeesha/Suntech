@@ -9,8 +9,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-
+        <activity android:name=".LaptopListUI"></activity>
+        <activity android:name=".LaptopProfileUI"></activity>
         <activity android:name=".RegisterMainUI"></activity>
+        <activity android:name=".AdminRegisterUI"></activity>
+        <activity android:name=".LaptopRegisterUI"></activity>
+        <activity android:name=".AdminMainUI"></activity>
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
