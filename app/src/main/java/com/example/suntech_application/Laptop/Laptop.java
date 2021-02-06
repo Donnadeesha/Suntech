@@ -10,42 +10,40 @@ public class Laptop {
     private String password;
 
 
-
-    public Laptop(){
-
+    public Laptop() {
     }
 
-    public String getId(){
+
+    public String getId() {
         return id;
     }
 
-    public void setId(String id){
-        this.id=id;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getModel(){
+    public String getModel() {
         return model;
     }
 
-    public void setModel(String model){
-        this.model=model;
+    public void setModel(String model) {
+        this.model = model;
     }
 
-    public String getQuantity(){
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity){
-        this.quantity=quantity;
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 
-
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 
-    public void setUserName(String userName) {
-        this.username = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -55,8 +53,4 @@ public class Laptop {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
-
-
 }
