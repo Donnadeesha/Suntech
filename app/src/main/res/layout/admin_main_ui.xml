@@ -86,28 +86,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnAdminProfile" />
 
-    <Button
-        android:id="@+id/btnAdminViewMonitors"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/button_round"
-        android:backgroundTint="#18648D"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:text="@string/view_monitor"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAdminViewLaptops"
-        app:layout_constraintVertical_bias="0.205" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
 
     String uName,pWord;
 
-
+    // variable to pass the value
+    public static final String EXTRA_USERNAME = "username pass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
                                     Admin Admin = dataSnapshot.getValue(Admin.class);
                                     if (pWord.equals(Admin.getPassword())) {
 
-                                        Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
 
                                         openAdminMainUI();
                                     } else {
@@ -120,7 +121,7 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
                     }
                     else if (userTypeValue.equals("Laptop")) {
 
-                        ref = FirebaseDatabase.getInstance().getReference("https://suntechapplication-default-rtdbfirebaseiocom/").child("Laptop");
+                        ref = FirebaseDatabase.getInstance().getReference("https://suntechapplication-default-rtdbfirebaseiocom/"   ).child("Laptop");
 
                         uName = username.getText().toString();
                         pWord = password.getText().toString();
@@ -134,7 +135,7 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
                                     Laptop doctor = dataSnapshot.getValue(Laptop.class);
                                     if (pWord.equals(doctor.getPassword())) {
 
-                                        Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
 
                                         openLaptopProfileUI();
 
@@ -194,6 +195,7 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
 
     private void openLaptopProfileUI() {
         Intent intent = new Intent(MainActivity.this,LaptopProfileUI.class);
+        intent.putExtra(EXTRA_USERNAME,uName);
         startActivity(intent);
     }
 

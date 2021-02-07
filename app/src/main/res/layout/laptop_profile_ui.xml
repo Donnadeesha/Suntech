@@ -27,7 +27,7 @@
             <TextView
                 android:id="@+id/tvLaptopRegistration"
                 android:layout_width="match_parent"
-                android:layout_height="116dp"
+                android:layout_height="55dp"
                 android:text="@string/laptop_profile"
                 android:textColor="@color/white"
                 android:textSize="35sp"
@@ -98,6 +98,26 @@
                 android:paddingLeft="5dp"
                 android:textSize="20sp" />
 
+            <TextView
+                android:id="@+id/tvLaptopUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/username"
+                android:textColor="@color/white"
+                android:textSize="25sp" />
+
+            <EditText
+                android:id="@+id/etLaptopUsername"
+                android:layout_width="200dp"
+                android:layout_height="27dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/edit_round"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:paddingLeft="5dp"
+                android:textSize="20sp" />
+
 
             <TextView
                 android:id="@+id/tvlaptopPassword"
@@ -116,7 +136,7 @@
                 android:background="@drawable/edit_round"
                 android:drawableTint="@color/gradStart"
                 android:ems="10"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:paddingLeft="5dp"
                 android:paddingRight="10dp"
                 android:textSize="20sp" />
@@ -124,7 +144,7 @@
             <Button
                 android:id="@+id/btnUpdateLaptop"
                 android:layout_width="350dp"
-                android:layout_height="wrap_content"
+                android:layout_height="38dp"
                 android:layout_gravity="bottom"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="56dp"
