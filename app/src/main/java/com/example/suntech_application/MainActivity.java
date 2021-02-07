@@ -1,22 +1,39 @@
 package com.example.suntech_application;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.suntech_application.Admin.Admin;
+import com.example.suntech_application.Laptop.Laptop;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity  implements AdapterView.OnItemSelectedListener {
 
     Spinner typeSpinner;
     public static String userTypeValue;
+
+    EditText username,password;
+
+    private DatabaseReference ref;
+
+    String uName,pWord;
 
 
 
@@ -38,8 +55,116 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
         typeSpinner.setOnItemSelectedListener(this);
 
 
-
+        Button btnLogin = (Button)findViewById(R.id.btnLogin);
         Button btnRegNow = (Button)findViewById(R.id.btnRegister);
+
+        username = (EditText)findViewById(R.id.etUsername);
+        password = (EditText)findViewById(R.id.etPassword);
+
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (TextUtils.isEmpty(username.getText().toString()) || TextUtils.isEmpty(password.getText().toString()) || userTypeValue.equals("NULL")) {
+                    if (TextUtils.isEmpty(username.getText().toString())) {
+
+                        Toast.makeText(getApplicationContext(),"Enter a username",Toast.LENGTH_SHORT).show();
+
+                    } else if (TextUtils.isEmpty(password.getText().toString())) {
+
+                        Toast.makeText(getApplicationContext(),"Enter a password",Toast.LENGTH_SHORT).show();
+
+                    } else {
+
+                        Toast.makeText(getApplicationContext(),"Select a user type.",Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+
+                    if (userTypeValue.equals("Admin")) {
+
+                        ref = FirebaseDatabase.getInstance().getReference("https://suntechapplication-default-rtdbfirebaseiocom/").child("Admin");
+
+                        uName = username.getText().toString();
+                        pWord = password.getText().toString();
+
+
+                        ref.child(uName).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                try {
+                                    Admin Admin = dataSnapshot.getValue(Admin.class);
+                                    if (pWord.equals(Admin.getPassword())) {
+
+                                        Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT).show();
+
+                                        openAdminMainUI();
+                                    } else {
+
+                                        Toast.makeText(getApplicationContext(),"Invalid Password",Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (NullPointerException e) {
+
+                                    Toast.makeText(getApplicationContext(),"Admin Record Not Found.",Toast.LENGTH_SHORT).show();
+                                    clearControls();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                    }
+                    else if (userTypeValue.equals("Laptop")) {
+
+                        ref = FirebaseDatabase.getInstance().getReference("https://suntechapplication-default-rtdbfirebaseiocom/").child("Laptop");
+
+                        uName = username.getText().toString();
+                        pWord = password.getText().toString();
+
+
+                        ref.child(uName).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                try {
+                                    Laptop doctor = dataSnapshot.getValue(Laptop.class);
+                                    if (pWord.equals(doctor.getPassword())) {
+
+                                        Toast.makeText(getApplicationContext(),"Successful",Toast.LENGTH_SHORT).show();
+
+                                        openLaptopProfileUI();
+
+                                    } else {
+                                        Toast.makeText(getApplicationContext(),"Invalid Password",Toast.LENGTH_SHORT).show();
+                                    }
+                                } catch (NullPointerException e) {
+
+                                    Toast.makeText(getApplicationContext(),"Laptop Record Not Found.",Toast.LENGTH_SHORT).show();
+
+                                    clearControls();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                    }
+
+
+                }
+
+
+            }
+        });
+
 
 
         btnRegNow.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +176,27 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
 
 
     }
+
+
+
+    private void clearControls() {
+        username.setText("");
+        password.setText("");
+        userTypeValue.equals("NULL");
+    }
+
+
+
+    private void openAdminMainUI() {
+        Intent intent = new Intent(MainActivity.this,AdminMainUI.class);
+        startActivity(intent);
+    }
+
+    private void openLaptopProfileUI() {
+        Intent intent = new Intent(MainActivity.this,LaptopProfileUI.class);
+        startActivity(intent);
+    }
+
 
     private void openRegisterMainUI() {
         Intent intent = new Intent(MainActivity.this,RegisterMainUI.class);
@@ -84,6 +230,8 @@ public class MainActivity extends AppCompatActivity  implements AdapterView.OnIt
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+
 
 
 
